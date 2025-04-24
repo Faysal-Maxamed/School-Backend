@@ -1,8 +1,7 @@
 import mongoose from "mongoose";
-import { type } from "os";
 
 const StudentSchema = mongoose.Schema({
-    SId: {
+    Id: {
         type: String,
         require: true,
     },
@@ -67,6 +66,10 @@ const StudentSchema = mongoose.Schema({
         type: String,
         require: true,
     },
+    Password:{
+        type:String,
+        require:true
+    },
     Role: {
         type: String,
         require: true,
@@ -75,4 +78,4 @@ const StudentSchema = mongoose.Schema({
 })
 
 const StudentTable = mongoose.model("StudentTable", StudentSchema);
-export default StudentSchema;
+export default StudentTable;
