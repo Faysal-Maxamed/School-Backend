@@ -8,9 +8,23 @@ StudentRouter.get('/',async(req,res)=>{
 
 });
 
+StudentRouter.get('/:Id',async(req,res)=>{
+    const {Id} =req.params;
+    const getById=await StudentTable.findOne({Id});
+    if(!getById) {
+        return res.status(404).json({messge:"This Student Not Found"})
+    }else{
+        res.status(200).json(getById)
+    }
+    
+})
+
 StudentRouter.post('/register',async(req,res)=>{
     try {
         const{Id,SFullName, SGender,SPlace,STell,SLastScore,SClass,SSubjects,SResult,SBranch,SPhoto,Password,Role}=req.body;
+        if(!Id || !SFullName || !SGender ||! STell || !SClass || !SSubjects || !SBranch || !SPhoto || !Password || !Role){
+            res.status(404).json({messge : "Please fill require fields"})
+        }
         const isExisting=await StudentTable.findOne({Id});
         if(isExisting) return res.status(400).json({messege:"Already Exists"})
         const registerStudent=new StudentTable({
@@ -37,11 +51,11 @@ StudentRouter.put('/:Id',async(req,res)=>{
     
 });
 
-// StudentRouter.delete('/:id',async(req,res)=>{
-//     const {Id} = req.params;
-//     const getId=await StudentTable.findOneAndDelete({Id:Id});
-//     if(getId) return res.status(200).json({messge:"Succsessfully deleted Student"});;
+StudentRouter.delete('/:Id',async(req,res)=>{
+    const {Id} = req.params;
+    const getId=await StudentTable.findOneAndDelete({Id:Id});
+    if(getId) return res.status(200).json({messge:"Succsessfully deleted Student"});;
     
-// })
+})
 
 export default StudentRouter

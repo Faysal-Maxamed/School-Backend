@@ -29,6 +29,8 @@ const AdminSchmena=mongoose.Schema({
         type: String,
         require: true,
     },
+},{
+    timestamps: true
 });
 
 const AdminTable=mongoose.model("AdminTable",AdminSchmena);

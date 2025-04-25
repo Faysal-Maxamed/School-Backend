@@ -46,7 +46,9 @@ const TeacherSchema = mongoose.Schema({
         require: true,
     },
 
+},{
+    timestamps: true
 })
 
 const TeacherTable = mongoose.model("TeacherTable", TeacherSchema);
-export default TeacherSchema;
+export default TeacherTable;

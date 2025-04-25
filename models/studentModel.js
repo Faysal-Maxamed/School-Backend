@@ -74,8 +74,17 @@ const StudentSchema = mongoose.Schema({
         type: String,
         require: true,
     },
+    Attendances: [
+        {
+          type: mongoose.Schema.Types.ObjectId,
+          ref: "AttedenceTable"
+        }
+      ],      
 
-})
+},{
+    timestamps: true
+}
+)
 
 const StudentTable = mongoose.model("StudentTable", StudentSchema);
 export default StudentTable;

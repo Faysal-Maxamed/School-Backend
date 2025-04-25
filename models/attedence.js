@@ -1,42 +1,37 @@
-import { time } from "console";
 import mongoose from "mongoose";
-import { type } from "os";
 
-const AttedenceSchema=mongoose.Schema({
-    StudentId:{
-        type:mongoose.Schema.Types.ObjectId,
-        require:true,
+const AttedenceSchema = mongoose.Schema({
+    StudentId: {
+        type: String,
+        required: true
     },
-    TeacherId:{
-        type:mongoose.Schema.Types.ObjectId,
-        require:true
+    TeacherId: {
+        type: String,
+        required: true,
     },
-    DateAndTime:{
-        type:Date,
-        default:Date.now
+    DateAndTime: {
+        type: Date,
+        default: Date.now,
     },
     Attedence: {
-        type: {
-            Soomali: {
-                type: Boolean,
-                require: false
-            },
-            English: { 
-                type: Boolean,
-                 required: false
-            },
-            Math: {
-                 type: Boolean,
-                  required: false
-             },
-            Science: { 
-                type: Boolean, 
-                required: false 
-            },
+        Soomali: {
+            type: Boolean,
+            default: false,
+        },
+        English: {
+            type: Boolean,
+            default: false,
+        },
+        Math: {
+            type: Boolean,
+            default: false,
+        },
+        Science: {
+            type: Boolean,
+            default: false,
         },
     },
-})
+});
 
-const AttedenceTable=mongoose.model("AttedenceTable",AttedenceSchema);
-
-export default AttedenceSchema;
+const AttedenceTable = mongoose.model("AttedenceTable", AttedenceSchema);
+export default AttedenceTable;
