@@ -1,90 +1,67 @@
 import mongoose from "mongoose";
 
 const StudentSchema = mongoose.Schema({
-    Id: {
-        type: String,
-        require: true,
-    },
-    SFullName: {
-        type: String,
-        require: true,
-    },
-    SGender: {
-        type: String,
-        require: true,
-    },
-    SPlace: {
-        type: String,
-        require: true,
-    },
-    STell: {
-        type: Number,
-        require: true,
-    },
-    SLastScore: {
-        type: [Number],
-    },
-    SClass: {
-        type: [String],
-    },
-    SSubjects: {
-        type: [String],
-        require: true,
-    },
-    SResult: {
-        type: [
-            {
-              Exam:{
-                type:String,
-                require:true
-            },
-            Results:{
-                type:[
-                    {
-                        subject:{
-                            type:String,
-                            require:true
-                        },
-                        Marks:{
-                            max:100,
-                            min:0,
-                            type:Number,
-                            require:true
-                        }
-                    }
-                ],
-                require:true
-            }
-            },
-        ],
-    },
-    SBranch: {
-        type: String,
-        require: true,
-    },
-    SPhoto: {
-        type: String,
-        require: true,
-    },
-    Password:{
-        type:String,
-        require:true
-    },
-    Role: {
-        type: String,
-        require: true,
-    },
-    Attendances: [
-        {
-          type: mongoose.Schema.Types.ObjectId,
-          ref: "AttedenceTable"
-        }
-      ],      
-
-},{
-    timestamps: true
-}
-)
+  Id: {
+    type: String,
+    required: true,
+  },
+  FullName: {
+    type: String,
+    required: true,
+  },
+  Gender: {
+    type: String,
+    required: true,
+  },
+  Place: {
+    type: String,
+    required: true,
+  },
+  Tell: {
+    type: Number,
+    required: true,
+  },
+  LastScore: {
+    type: [Number],
+  },
+  Class: {
+    type: [String],
+  },
+  Subjects: {
+    type: [String],
+    required: true,
+  },
+  Branch: {
+    type: String,
+    required: true,
+  },
+  Photo: {
+    type: String,
+    required: true,
+  },
+  Password: {
+    type: String,
+    required: true,
+  },
+  Role: {
+    type: String,
+    required: true,
+  },
+  Attendances: [
+    {
+      type: mongoose.Schema.Types.ObjectId,
+      ref: "AttedenceTable",
+    }
+  ],
+  Results: [
+    {
+      type: mongoose.Schema.Types.ObjectId,
+      ref: "ResultTable",
+    }
+  ],
+}, {
+  timestamps: true,
+});
 
 const StudentTable = mongoose.model("StudentTable", StudentSchema);
 export default StudentTable;

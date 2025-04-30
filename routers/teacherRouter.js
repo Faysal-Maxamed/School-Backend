@@ -24,17 +24,15 @@ TeacherRouter.get('/:Id', async (req, res) => {
 
 TeacherRouter.post('/register', async (req, res) => {
     try {
-        const { Id, TFullName, TGender, TPlace, TTell, TClasses, TSubjects, TBranch, TPhoto, Password, Role } = req.body;
+        const { Id, FullName, Gender, Place, Tell, Classes, Subjects, Branch, Photo, Password, Role } = req.body;
 
-        if (!Id || !TFullName || !TGender || !TPlace || !TTell || !TClasses || !TSubjects || !TBranch || !TPhoto || !Password || !Role) {
+        if (!Id || !FullName || !Gender || !Place || !Tell || !Classes || !Subjects || !Branch || !Photo || !Password || !Role) {
             return res.status(400).json({ messge: "Please fill require fields " })
         };
 
         const isExisting = await TeacherTable.findOne({ Id });
 
-        const registerteacher = await new TeacherTable({
-            Id, TFullName, TGender, TPlace, TTell, TClasses, TSubjects, TBranch, TPhoto, Password, Role
-        });
+        const registerteacher = await new TeacherTable({ Id, FullName, Gender, Place, Tell, Classes, Subjects, Branch, Photo, Password, Role });
         if (isExisting) return res.status(400).json({ messge: "This Id already register" });
         const NewDate = await registerteacher.save();
         res.status(201).json(NewDate);

@@ -5,35 +5,35 @@ const TeacherSchema = mongoose.Schema({
         type: String,
         require: true,
     },
-    TFullName: {
+    FullName: {
         type: String,
         require: true,
     },
-    TGender: {
+    Gender: {
         type: String,
         require: true,
     },
-    TPlace: {
+    Place: {
         type: String,
         require: true,
     },
-    TTell: {
+    Tell: {
         type: Number,
         require: true,
     },
-    TClasses: {
+    Classes: {
         type: [String],
         required:true,
     },
-    TSubjects: {
+    Subjects: {
         type: [String],
         require: true,
     },
-    TBranch: {
+    Branch: {
         type: [String],
         require: true,
     },
-    TPhoto: {
+    Photo: {
         type: String,
         require: true,
     },

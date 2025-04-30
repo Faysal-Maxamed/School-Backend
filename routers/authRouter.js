@@ -21,7 +21,7 @@ AuthRouter.post('/login',async(req,res)=>{
             res.status(401).json({messge:"Incorrect password"})
         }
 
-        res.status(200).json({messge:"Succsessfully Login Welcome",Id:User.Id,Password:User.Password,Role:User.Role})
+        res.status(200).json(user)
     } catch (error) {
         res.status(500).json(`error occur in ${error}`)
     }

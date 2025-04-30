@@ -34,9 +34,9 @@ AdminRouter.get('/:Id', async (req, res) => {
 AdminRouter.post('/register', async (req, res) => {
     try {
 
-        const { Id, AFullName, APhone, AGender, Aplace, Password, Role } = req.body;
+        const { Id, FullName, Phone, Gender, place, Password, Role } = req.body;
 
-        if(!Id || !AFullName || !APhone || ! AGender || !Aplace || !Password  || !Role){
+        if(!Id || !FullName || !Phone || ! Gender || !place || !Password  || !Role){
             return res.status(400).json({messge:"Please fill all required field"})
         }
 
@@ -47,7 +47,7 @@ AdminRouter.post('/register', async (req, res) => {
         }
         const hashed=await bcrypt.hash(Password,10)
         const registerAdmin = new AdminTable({
-            Id, AFullName, APhone, AGender, Aplace, Password:hashed ,Role
+            Id, FullName, Phone, Gender, place, Password:hashed ,Role
         });
         const NewDate = await registerAdmin.save();
         res.status(201).json(NewDate);

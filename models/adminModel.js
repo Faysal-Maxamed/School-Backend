@@ -5,19 +5,19 @@ const AdminSchmena=mongoose.Schema({
         type:String,
         require:true
     },
-    AFullName:{
+    FullName:{
         type:String,
         require:true
     },
-    APhone:{
+    Phone:{
         type:Number,
         require:true
     },
-    AGender:{
+    Gender:{
         type:String,
         require:true
     },
-    Aplace:{
+    place:{
         type:String,
         require:true
     },
